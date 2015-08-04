@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+	<title>Backbone tutorial</title>
+	</head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script src="underscore.js" type="text/javascript"></script>
+	<script src="backbone.js" type="text/javascript"></script>
+	<body>
+	
+	<script type="text/javascript">
+	
+		Person = Backbone.Model.extend({
+			initialize: function(){
+				console.log("Object is created");
+				
+				this.on("change", function(){
+					alert("Name attribute value has been changed");	
+				});
+			},
+			defaults: {
+				name: "default",
+				age: "0"
+			},
+			getNameAndAge: function() {
+				console.log("Name is: " + this.get('name') + " and Age is: " + this.get('age'));
+			}
+		});
+		var steve = new Person();
+		console.log(steve.get('name'));
+		console.log(steve.get('age'));
+		
+		var vira = new Person({name: "Vira", age: "24"});
+		console.log(vira.get('name'));
+		console.log(vira.get('age'));
+		
+		steve.getNameAndAge();
+		steve.set({name:"Steve"});
+		steve.set({age:"1000"});
+	
+	</script>
+	
+	</body>
+</html>
